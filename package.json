@@ -1,0 +1,19 @@
+{
+  "name": "fullstackopen-backend",
+  "version": "1.0.0",
+  "description": "The [fullstackopen course](https://fullstackopen.com/en/#course-contents) is offered for free by University of Helsinki in a self-paced online format.\r The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js, \r and introduces you to modern JavaScript-based web development.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon indexjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
