@@ -1,3 +1,4 @@
+const { request, response } = require('express')
 const express = require('express')
 const noteRouter = require('./routes/NoteRouter')
 const personRouter = require('./routes/PersonRouter')
@@ -16,6 +17,13 @@ app.use(express.json())
 app.get('/', (request, response) => {
     console.log(request.headers);
     response.send('<h1>Hello Ireland!</h1>')
+})
+
+app.get('/info', (request, response) => {
+    response.send(`
+        <p>Phonebook has info for ${personRouter.persons.length} people</p>
+        <p>${new Date()}</p>
+    `)
 })
 
 /**
