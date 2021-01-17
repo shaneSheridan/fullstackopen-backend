@@ -1,4 +1,3 @@
-const { request, response } = require('express')
 const express = require('express')
 const noteRouter = require('./routes/NoteRouter')
 const personRouter = require('./routes/PersonRouter')
@@ -14,13 +13,13 @@ app.use(express.json())
  Define routes with event handlers that handle specific HTTP method requests, e.g. GET,
  made to the specified path relative to the server's base URI 'http://localhost:3001'.
 */
-app.get('/', (request, response) => {
-    console.log(request.headers);
-    response.send('<h1>Hello Ireland!</h1>')
+app.get('/', (req, res) => {
+    console.log(req.headers);
+    res.send('<h1>Hello Ireland!</h1>')
 })
 
-app.get('/info', (request, response) => {
-    response.send(`
+app.get('/info', (req, res) => {
+    res.send(`
         <p>Phonebook has info for ${personRouter.persons.length} people</p>
         <p>${new Date()}</p>
     `)

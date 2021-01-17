@@ -25,9 +25,25 @@ let persons = [
     }
 ]
 
-router.get('/', (request, response) => {
-    response.json(persons)
+router.get('/', (req, res) => {
+    res.json(persons)
 })
+
+router.get('/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const person = findPersonByID(id)
+
+    if (person) {    
+        res.json(person)
+    }
+    else { 
+        res.status(404).end()
+    }
+})
+
+const findPersonByID = id => {
+    return persons.find(aPerson => aPerson.id === id)
+}
 
 module.exports = router
 module.exports.persons = persons
