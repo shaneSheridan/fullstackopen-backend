@@ -1,5 +1,6 @@
 const express = require('express')
 const noteRouter = require('./routes/NoteRouter')
+const personRouter = require('./routes/PersonRouter')
 
 // Create a web server using the express module.
 const app = express()
@@ -21,6 +22,7 @@ app.get('/', (request, response) => {
  * Most routes are defined in separate Router files, and bound to this app.
 */
 app.use('/api/note', noteRouter)
+app.use('/api/persons', personRouter)
 
 /**
  * Bind the web server to listen for requests sent to port 3001.
