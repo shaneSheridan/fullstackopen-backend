@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/notes
+POST http://localhost:3001/api/note
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3001/api/notes
+POST http://localhost:3001/api/note
 Content-Type: application/json
 
 {
