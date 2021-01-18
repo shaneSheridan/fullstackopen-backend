@@ -41,8 +41,22 @@ router.get('/:id', (req, res) => {
     }
 })
 
+router.delete('/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const statusCode = deletePersonByID(id)
+ 
+    res.status(statusCode).end()
+})
+
 const findPersonByID = id => {
     return persons.find(aPerson => aPerson.id === id)
+}
+
+const deletePersonByID = id => {
+    const statusCode = 204
+    persons = persons.filter(aPerson => aPerson.id !== id)
+
+    return statusCode
 }
 
 module.exports = router
