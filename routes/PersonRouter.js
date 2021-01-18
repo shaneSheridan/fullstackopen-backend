@@ -50,10 +50,40 @@ router.delete('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const body = req.body
+
+    const errors = validateRequestBody(body)
+    if (errors.length !== 0) {
+        const errorJson = {
+            error: errors.join(' ')
+        }
+        return res.status(400).json(errorJson)
+    }
+
     const aPerson = buildPerson(body)
     insertNewPerson(aPerson)
     res.json(aPerson)
 })
+
+const validateRequestBody = body => {
+    let errors = []
+
+    if (!body.name) {
+        errors.push('Name is required.')
+    }
+    if (!body.number) {
+        errors.push('Number is required.')
+    }
+    if (nameExistsAlready(body.name)) {
+        errors.push('Name must be unique.')
+    }
+
+    return errors
+} 
+
+const nameExistsAlready = name => {
+    const found = persons.find(aPerson => aPerson.name === name)
+    return found
+}
 
 const buildPerson = body => {
     return {

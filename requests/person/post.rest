@@ -5,3 +5,31 @@ Content-Type: application/json
     "name": "Jackie Kelly",
     "number": "042-1234434256"
 }
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Jackie Kelly"
+}
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "number": "042-1234434256"
+}
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Matt Damen",
+    "number": "042-45321"
+}
