@@ -48,6 +48,33 @@ router.delete('/:id', (req, res) => {
     res.status(statusCode).end()
 })
 
+router.post('/', (req, res) => {
+    const body = req.body
+    const aPerson = buildPerson(body)
+    insertNewPerson(aPerson)
+    res.json(aPerson)
+})
+
+const buildPerson = body => {
+    return {
+        id: generateID(),
+        name: body.name,
+        number: body.number
+    }
+}
+
+const generateID = () => {
+    return getRandomInt(100)
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+const insertNewPerson = aPerson => {
+    persons = persons.concat(aPerson)
+}
+
 const findPersonByID = id => {
     return persons.find(aPerson => aPerson.id === id)
 }
