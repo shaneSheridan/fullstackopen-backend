@@ -1,18 +1,20 @@
 const express = require('express')
+
+const morgan = require('morgan')
+
 const noteRouter = require('./routes/NoteRouter')
 const personRouter = require('./routes/PersonRouter')
 
 // Create a web server using the express module.
 const app = express()
 
-// Set 'json-parser' middleware which takes JSON data of a request, transforms it into a JavaScript object
-// and then attaches it to the body property of the request object before the route handler is called.
+//----------
+// Middleware to be called before route event handlers are called.
 app.use(express.json())
+app.use(morgan('tiny'))
 
-/*
- Define routes with event handlers that handle specific HTTP method requests, e.g. GET,
- made to the specified path relative to the server's base URI 'http://localhost:3001'.
-*/
+//--------------
+// Route handlers.
 app.get('/', (req, res) => {
     console.log(req.headers);
     res.send('<h1>Hello Ireland!</h1>')
