@@ -1,9 +1,8 @@
 const express = require('express')
 
-const morgan = require('morgan')
-
 const noteRouter = require('./routes/NoteRouter')
 const personRouter = require('./routes/PersonRouter')
+const logger = require('./util/Logger')
 
 // Create a web server using the express module.
 const app = express()
@@ -11,7 +10,7 @@ const app = express()
 //----------
 // Middleware to be called before route event handlers are called.
 app.use(express.json())
-app.use(morgan('tiny'))
+app.use(logger)
 
 //--------------
 // Route handlers.
